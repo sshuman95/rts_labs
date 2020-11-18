@@ -3,6 +3,8 @@ import { useState } from "react";
 import './App.css';
 import { useSelector, useDispatch } from "react-redux";
 import { addTerm } from "./redux/action";
+
+
 const Results = (props) =>{
    let empty = <h1>No Results Found</h1>
    return props.data.hits <= 0 ? empty : props.data.hits.map(d=>{
@@ -15,7 +17,7 @@ const Results = (props) =>{
 
 const PastSearches = (props) => {
   return props.terms.map(term=>{
-  return <p>{term}</p>
+    return <p>{term}</p>
   })
 }
 
@@ -24,7 +26,9 @@ const App = () => {
   const [apiData, setApiData] = useState([]);
   const pastTerms = useSelector( state => state.terms )
   const dispatch = useDispatch();
-  console.log(dispatch);
+
+
+
   const handleChange = (e) => {
     setSearch(e.target.value);
   }
@@ -32,18 +36,18 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(searchTerm){
-      let temp = searchTerm;
-      fetch(`http://hn.algolia.com/api/v1/search?query=${searchTerm}`)
-      .then(res=>{
-        return res.json()
-      })
-      .then(json=>{
-        setApiData(json);
-        dispatch(addTerm(temp));
-      })
-      .catch(err=>{
-          console.error(err)
-      })
+        let temp = searchTerm;
+        fetch(`http://hn.algolia.com/api/v1/search?query=${searchTerm}`)
+        .then(res=>{
+          return res.json()
+        })
+        .then(json=>{
+          setApiData(json);
+          dispatch(addTerm(temp));
+        })
+        .catch(err=>{
+            console.error(err)
+        })
     }
   }
 
@@ -58,6 +62,7 @@ const App = () => {
         </form>
         <section className="searchResults">
           <div className="resultsContainer">
+            <h1>Results</h1>
             {apiData.length <= 0 ?<p>Please enter a search term</p>:<Results data={apiData}/>}
           </div> 
           <div>

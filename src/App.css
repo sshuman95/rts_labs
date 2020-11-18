@@ -1,3 +1,8 @@
+.App{
+  text-align: center;
+}
+
+
 .searchResults{
   display: flex;
   justify-content: space-evenly;
