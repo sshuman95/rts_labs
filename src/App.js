@@ -50,7 +50,7 @@ const App = () => {
           dispatch(addTerm(temp));
         })
         .catch(err=>{
-            console.error(err)
+          console.error(err)
         })
     }
   }
