@@ -13,7 +13,9 @@ const Results = (props) =>{
           <p>{d.title}</p>
         )
       } else {
-        return null;
+       return (
+          <p>{d.story_title}</p>
+       )
       }
     })
 }
