@@ -8,9 +8,11 @@ import { addTerm } from "./redux/action";
 const Results = (props) =>{
    let empty = <h1>No Results Found</h1>
    return props.data.hits <= 0 ? empty : props.data.hits.map(d=>{
-      return (
+      if(d.title){
+        return (
           <p>{d.title}</p>
-      )
+        )
+      }
     })
 }
 
