@@ -1,23 +1,30 @@
 
 import { useState } from "react";
 import './App.css';
-
+import { useSelector, useDispatch } from "react-redux";
+import { addTerm } from "./redux/action";
 const Results = (props) =>{
-    return props.data.hits.map(p=>{
+   let empty = <h1>No Results Found</h1>
+   return props.data.hits <= 0 ? empty : props.data.hits.map(d=>{
       return (
-        <section>
-            <p>{p.title}</p>
-       </section>
+          <p>{d.title}</p>
       )
     })
 }
 
 
+const PastSearches = (props) => {
+  return props.terms.map(term=>{
+  return <p>{term}</p>
+  })
+}
+
 const App = () => {
   const [searchTerm, setSearch] = useState("");
   const [apiData, setApiData] = useState([]);
-  const [pastTerms, setPastTerms] = useState([]);
-
+  const pastTerms = useSelector( state => state.terms )
+  const dispatch = useDispatch();
+  console.log(dispatch);
   const handleChange = (e) => {
     setSearch(e.target.value);
   }
@@ -25,13 +32,14 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(searchTerm){
+      let temp = searchTerm;
       fetch(`http://hn.algolia.com/api/v1/search?query=${searchTerm}`)
       .then(res=>{
         return res.json()
       })
       .then(json=>{
         setApiData(json);
-       
+        dispatch(addTerm(temp));
       })
       .catch(err=>{
           console.error(err)
@@ -48,8 +56,15 @@ const App = () => {
             <input onChange={handleChange} type="text" placeholder="Search Term"/>
             <input type="submit" onClick={handleSubmit}/>
         </form>
-        <p>{searchTerm}</p>
-        {apiData.length <= 0 ?<p>Please enter a search term</p>:<Results data={apiData}/>}
+        <section className="searchResults">
+          <div className="resultsContainer">
+            {apiData.length <= 0 ?<p>Please enter a search term</p>:<Results data={apiData}/>}
+          </div> 
+          <div>
+            <h1>Your past seach terms</h1>
+            {pastTerms.length <= 0 ? <p>No Searches Recorded</p> : <PastSearches terms={pastTerms}/>}
+          </div> 
+        </section>
     </div>
   );
 }
