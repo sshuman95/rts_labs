@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/rts_labs/static/css/main.104eede5.chunk.css",
+    "main.js": "/rts_labs/static/js/main.05872b7b.chunk.js",
+    "main.js.map": "/rts_labs/static/js/main.05872b7b.chunk.js.map",
+    "runtime-main.js": "/rts_labs/static/js/runtime-main.f1002de1.js",
+    "runtime-main.js.map": "/rts_labs/static/js/runtime-main.f1002de1.js.map",
+    "static/js/2.ff66eff9.chunk.js": "/rts_labs/static/js/2.ff66eff9.chunk.js",
+    "static/js/2.ff66eff9.chunk.js.map": "/rts_labs/static/js/2.ff66eff9.chunk.js.map",
+    "static/js/3.7584fdd0.chunk.js": "/rts_labs/static/js/3.7584fdd0.chunk.js",
+    "static/js/3.7584fdd0.chunk.js.map": "/rts_labs/static/js/3.7584fdd0.chunk.js.map",
+    "index.html": "/rts_labs/index.html",
+    "static/css/main.104eede5.chunk.css.map": "/rts_labs/static/css/main.104eede5.chunk.css.map",
+    "static/js/2.ff66eff9.chunk.js.LICENSE.txt": "/rts_labs/static/js/2.ff66eff9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f1002de1.js",
+    "static/js/2.ff66eff9.chunk.js",
+    "static/css/main.104eede5.chunk.css",
+    "static/js/main.05872b7b.chunk.js"
+  ]
+}
