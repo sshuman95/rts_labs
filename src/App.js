@@ -10,11 +10,11 @@ const Results = (props) =>{
    return props.data.hits.length <= 0 ? empty : props.data.hits.map(d=>{
       if(d.title){
         return (
-          <p>{d.title}</p>
+          <p key={d.objectID}>{d.title}</p>
         )
       } else {
        return (
-          <p>{d.story_title}</p>
+          <p key={d.objectID}>{d.story_title}</p>
        )
       }
     })
@@ -22,8 +22,8 @@ const Results = (props) =>{
 
 
 const PastSearches = (props) => {
-  return props.terms.map(term=>{
-    return <p>{term}</p>
+  return props.terms.map((term,i)=>{
+    return <p key={i}>{term}</p>
   })
 }
 
@@ -43,7 +43,7 @@ const App = () => {
     e.preventDefault();
     if(searchTerm){
         let temp = searchTerm;
-        fetch(`http://hn.algolia.com/api/v1/search?query=${searchTerm}`)
+        fetch(`https://hn.algolia.com/api/v1/search?query=${searchTerm}`)
         .then(res=>{
           return res.json()
         })
