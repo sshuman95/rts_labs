@@ -15,6 +15,7 @@ const App = () => {
   const [searchTerm, setSearch] = useState("");
   const [searchTags, setTags] = useState([]);
   const [apiData, setApiData] = useState([]);
+  const [error,setError] = useState(false)
   const pastTerms = useSelector( state => state.terms )
   const dispatch = useDispatch();
 
@@ -39,6 +40,7 @@ const App = () => {
   const handleQueryChange = (e) => {
     setQuery(e.target.value);
     setApiData([]);
+    setError(false)
   }
 
   const handleSubmit = (e) => {
@@ -55,7 +57,7 @@ const App = () => {
             url = `items/${searchTerm}`;
             break;
           case "username":
-            url = `/users/${searchTerm}`;
+            url = `users/${searchTerm}`;
             break;
           default:
             return;
@@ -68,9 +70,11 @@ const App = () => {
         })
         .then(json=>{
           setApiData(json);
+          setError(false);
         })
         .catch(err=>{
-          console.error(err)
+          console.error(err);
+          setError(true);
         })
     }
   }
@@ -97,6 +101,7 @@ const App = () => {
             : ""}
             <input type="submit" onClick={handleSubmit}/>
         </form>
+        {error?<h2 style={{color:'red'}}>Failed to Fetch. Please try with a different Query</h2>:""}
         <section className="searchResults">
           <div className="resultsContainer">
             <h1>Results</h1>
