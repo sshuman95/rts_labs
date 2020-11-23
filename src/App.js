@@ -55,9 +55,11 @@ const App = () => {
             break;
           case "id":
             url = `items/${searchTerm}`;
+            tagsToSend = "id";
             break;
           case "username":
             url = `users/${searchTerm}`;
+            tagsToSend = "username";
             break;
           default:
             return;
