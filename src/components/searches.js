@@ -10,7 +10,12 @@ const Searches = () => {
             return (
                 <div className="box">
                     <p>Term Used: {term}</p>
-                    <p>Tags used: {pastTags[i]}</p>
+                    <div>
+                        <p>Tags Used:</p>
+                        {pastTags[i] === "" ? "No tags used" : pastTags[i].split(",").map(tag=>{
+                            return <p>{tag}</p>
+                        })}
+                    </div>
                 </div>
             )
         })

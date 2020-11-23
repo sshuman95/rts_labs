@@ -121,7 +121,7 @@ const App = () => {
             {apiData.length <= 0 ? <p>Please enter a search term</p> : <Results query={queryType} data={apiData}/>}
           </div> 
           <div>
-            <h1>Your past seach terms</h1>
+            <h1>Your past search terms</h1>
             <Searches/>
           </div> 
         </section>
