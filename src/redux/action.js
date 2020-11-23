@@ -4,3 +4,11 @@ export const addTerm = (term) => {
       payload:term
     }
   }
+
+
+export const addTag = (tags) => {
+    return {
+      type: "ADD_TAG",
+      payload:tags
+    }
+  }

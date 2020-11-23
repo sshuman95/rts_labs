@@ -1,5 +1,6 @@
 const intialState = {
-    terms:[]
+    terms:[],
+    tags:[]
 }
 
 
@@ -10,6 +11,11 @@ const terms = (state = intialState, action) => {
         return {
             ...state,
             terms:[...state.terms, action.payload]
+        }
+      case "ADD_TAG":
+          return {
+              ...state,
+              tags:[...state.tags, action.payload]
         }
       default:
         return state;
