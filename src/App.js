@@ -23,6 +23,7 @@ const App = () => {
   const handleQueryChange = (e) => {
     setQuery(e.target.value);
     setApiData([]);
+    setTags([]);
     setError(false)
   }
 

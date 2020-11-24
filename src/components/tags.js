@@ -1,3 +1,4 @@
+
 const Tags = (props) => {
     const tags = [
         "story",
@@ -16,7 +17,7 @@ const Tags = (props) => {
             return (
                 <div key={tag}>
                     <label>{tag}</label>
-                    <input onClick={props.handleTag} type="checkbox" value={tag} name={tag}/>
+                    <input className="checked" onClick={props.handleTag} type="checkbox" value={tag} name={tag}/>
                 </div>
             ) 
         } else {
