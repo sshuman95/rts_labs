@@ -24,6 +24,8 @@ const App = () => {
     setQuery(e.target.value);
     setApiData([]);
     setTags([]);
+    setAuthor('');
+    setStory('');
     setError(false)
   }
 
